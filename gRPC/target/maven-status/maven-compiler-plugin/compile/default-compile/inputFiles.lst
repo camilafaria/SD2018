@@ -1,8 +1,8 @@
-C:\Users\camil\eclipse-workspace\gRPC\src\main\java\grpc\HelloWorldServer.java
-C:\Users\camil\eclipse-workspace\gRPC\target\generated-sources\protobuf\java\gRPC\proto\MyProto.java
-C:\Users\camil\eclipse-workspace\gRPC\target\generated-sources\protobuf\java\gRPC\proto\HelloReply.java
-C:\Users\camil\eclipse-workspace\gRPC\target\generated-sources\protobuf\java\gRPC\proto\HelloReplyOrBuilder.java
-C:\Users\camil\eclipse-workspace\gRPC\target\generated-sources\protobuf\grpc-java\gRPC\proto\GreeterGrpc.java
-C:\Users\camil\eclipse-workspace\gRPC\src\main\java\grpc\HelloWorldClient.java
-C:\Users\camil\eclipse-workspace\gRPC\target\generated-sources\protobuf\java\gRPC\proto\HelloRequest.java
-C:\Users\camil\eclipse-workspace\gRPC\target\generated-sources\protobuf\java\gRPC\proto\HelloRequestOrBuilder.java
+C:\Users\camil\SD2018\gRPC\src\main\java\grpc\HelloWorldClient.java
+C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\HelloReply.java
+C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\grpc-java\gRPC\proto\GreeterGrpc.java
+C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\HelloRequest.java
+C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\HelloRequestOrBuilder.java
+C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\HelloReplyOrBuilder.java
+C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\MyProto.java
+C:\Users\camil\SD2018\gRPC\src\main\java\grpc\HelloWorldServer.java
