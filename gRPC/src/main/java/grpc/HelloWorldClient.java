@@ -43,7 +43,10 @@ public class HelloWorldClient {
 			channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 		}
                 
-                public void run(){
+                public Long[] run(){
+                    //criar vetor tempos de execucao
+                    Long[] tempos = new Long[10];
+                    
                     //criar requests
                     VoidMsg voidReq = VoidMsg.newBuilder().build();
                     IntMsg intReq = IntMsg.newBuilder().setMessage(123).build();
@@ -65,10 +68,10 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei void recebi void");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[0] = (end - start);
 
                     //envia int recebe int
                     try{
@@ -77,10 +80,10 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei int (" + intReq.getMessage() + ") recebi int (" + intResp.getMessage() + ")");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[1] = (end - start);
 
                     //envia string recebe string
                     try{
@@ -89,10 +92,10 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei string (" + stringReq.getMessage() + ") recebi string(" + stringResp.getMessage() + ")");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[2] = (end - start);
 
                     //envia int recebe void
                     try{
@@ -101,10 +104,10 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei int (" + intReq.getMessage() + ") recebi void");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[3] = (end - start);
                     
                     //envia string recebe void
                     try{
@@ -113,10 +116,10 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei string (" + stringReq.getMessage() + ") recebi void");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[4] = (end - start);
                     
                     //envia void recebe int
                     try{
@@ -125,10 +128,10 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei void recebi int (" + intResp.getMessage() + ")");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[5] = (end - start);
                     
                     //envia void recebe string
                     try{
@@ -137,10 +140,10 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei void recebi string (" + stringResp.getMessage() + ")");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[6] = (end - start);
                     
                     //envia void recebe big string
                     try{
@@ -149,10 +152,10 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei void recebi big string (1KB)");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[7] = (end - start);
                     
                     //envia void recebe super string
                     try{
@@ -161,10 +164,10 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei void recebi super string (1MB)");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[8] = (end - start);
                     
                     //envia big string recebe void
                     stringReq = StringMsg.newBuilder().setMessage(bigString()).build();
@@ -174,13 +177,13 @@ public class HelloWorldClient {
                         end = System.currentTimeMillis();
                     } catch (StatusRuntimeException e) {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                        return;
+                        return null;
                     }
                     logger.info("enviei big string (1KB) recebi void");
-                    logger.info("levou " + (end - start) + " milisegundos");
+                    tempos[9] = (end - start);
                     
                      //envia super string recebe void
-                    stringReq = StringMsg.newBuilder().setMessage(superString()).build();
+                    //stringReq = StringMsg.newBuilder().setMessage(superString()).build();
                     //try{
                     //    start = System.currentTimeMillis();
                     //    voidResp = blockingStub.stringVoid(stringReq);
@@ -191,6 +194,8 @@ public class HelloWorldClient {
                     //}
                     //logger.info("enviei super string (1MB) recebi void");
                     //logger.info("levou " + (end - start) + " milisegundos");
+                    
+                    return tempos;
                 }
 
 		/** Say hello to server. */
@@ -227,12 +232,40 @@ public class HelloWorldClient {
 				//	user = args[0]; /* Use the arg as the name to greet if provided */
 				//}
 				//client.greet(user);
+                            Long[][] tempos = new Long[11][11];
                             
-                            for (int i = 0; i < 10; i++) {
-                                client.run();
+                            //executa uma vez a mais porque o primeiro tempo vem zuado
+                            for (int i = 0; i < 11; i++) {
+                                tempos[i] = client.run();
                             }
-			} finally {
-				client.shutdown();
+                            String qqq = "";
+                            
+                            int media = 0;
+                            
+                            for (int j = 0; j < 10; j++) {
+                                switch(j){
+                                    case (0):qqq += "void void \n";break; 
+                                    case (1):qqq += "int int \n";break;
+                                    case (2):qqq += "string string \n";break;
+                                    case (3):qqq += "int void \n";break;
+                                    case (4):qqq += "string void \n";break;
+                                    case (5):qqq += "void int \n";break;
+                                    case (6):qqq += "void string \n";break;
+                                    case (7):qqq += "void / big string \n";break;
+                                    case (8):qqq += "void / super string \n";break;
+                                    case (9):qqq += "big string / void \n";break;
+                                }
+                                //olha so a partir da segunda execucao
+                                for (int i = 1; i < 11; i++) {                                
+                                    media += tempos[i][j];
+                                    qqq += tempos[i][j] + " ";
+                                } 
+                                qqq += "media " + media/10 + "\n";
+                                media = 0;
+                            }
+                            logger.info(qqq);
+			} finally {   
+                            client.shutdown();
 			}
 		}
                 
