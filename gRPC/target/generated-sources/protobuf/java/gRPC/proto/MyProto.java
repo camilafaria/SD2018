@@ -24,6 +24,31 @@ public final class MyProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_gRPC_HelloReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_gRPC_GoodbyeRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_gRPC_GoodbyeRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_gRPC_GoodbyeReply_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_gRPC_GoodbyeReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_gRPC_VoidMsg_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_gRPC_VoidMsg_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_gRPC_IntMsg_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_gRPC_IntMsg_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_gRPC_StringMsg_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_gRPC_StringMsg_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -34,11 +59,25 @@ public final class MyProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\ngRPC.proto\022\004gRPC\"\034\n\014HelloRequest\022\014\n\004na" +
-      "me\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t2" +
-      "v\n\007Greeter\0222\n\010SayHello\022\022.gRPC.HelloReque" +
-      "st\032\020.gRPC.HelloReply\"\000\0227\n\rSayHelloAgain\022" +
-      "\022.gRPC.HelloRequest\032\020.gRPC.HelloReply\"\000B" +
-      "\035\n\ngRPC.protoB\007MyProtoP\001\242\002\003HLWb\006proto3"
+      "me\030\001 \001(\t\"\035\n\nHelloReply\022\017\n\007message\030\001 \001(\t\"" +
+      "\036\n\016GoodbyeRequest\022\014\n\004name\030\003 \001(\005\"\035\n\014Goodb" +
+      "yeReply\022\r\n\005tchau\030\006 \001(\005\"\t\n\007VoidMsg\"\031\n\006Int" +
+      "Msg\022\017\n\007message\030\001 \001(\005\"\034\n\tStringMsg\022\017\n\007mes" +
+      "sage\030\001 \001(\t2\232\004\n\007Greeter\0222\n\010SayHello\022\022.gRP" +
+      "C.HelloRequest\032\020.gRPC.HelloReply\"\000\0227\n\rSa" +
+      "yHelloAgain\022\022.gRPC.HelloRequest\032\020.gRPC.H" +
+      "elloReply\"\000\022*\n\010VoidVoid\022\r.gRPC.VoidMsg\032\r" +
+      ".gRPC.VoidMsg\"\000\022&\n\006IntInt\022\014.gRPC.IntMsg\032" +
+      "\014.gRPC.IntMsg\"\000\0222\n\014StringString\022\017.gRPC.S" +
+      "tringMsg\032\017.gRPC.StringMsg\"\000\022(\n\007IntVoid\022\014" +
+      ".gRPC.IntMsg\032\r.gRPC.VoidMsg\"\000\022.\n\nStringV" +
+      "oid\022\017.gRPC.StringMsg\032\r.gRPC.VoidMsg\"\000\022(\n" +
+      "\007VoidInt\022\r.gRPC.VoidMsg\032\014.gRPC.IntMsg\"\000\022" +
+      ".\n\nVoidString\022\r.gRPC.VoidMsg\032\017.gRPC.Stri" +
+      "ngMsg\"\000\0221\n\rVoidBigString\022\r.gRPC.VoidMsg\032" +
+      "\017.gRPC.StringMsg\"\000\0223\n\017VoidSuperString\022\r." +
+      "gRPC.VoidMsg\032\017.gRPC.StringMsg\"\000B\035\n\ngRPC." +
+      "protoB\007MyProtoP\001\242\002\003HLWb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -63,6 +102,36 @@ public final class MyProto {
     internal_static_gRPC_HelloReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_gRPC_HelloReply_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_gRPC_GoodbyeRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_gRPC_GoodbyeRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_gRPC_GoodbyeRequest_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_gRPC_GoodbyeReply_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_gRPC_GoodbyeReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_gRPC_GoodbyeReply_descriptor,
+        new java.lang.String[] { "Tchau", });
+    internal_static_gRPC_VoidMsg_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_gRPC_VoidMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_gRPC_VoidMsg_descriptor,
+        new java.lang.String[] { });
+    internal_static_gRPC_IntMsg_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_gRPC_IntMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_gRPC_IntMsg_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_gRPC_StringMsg_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_gRPC_StringMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_gRPC_StringMsg_descriptor,
         new java.lang.String[] { "Message", });
   }
 

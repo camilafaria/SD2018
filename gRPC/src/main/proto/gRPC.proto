@@ -9,10 +9,20 @@ option objc_class_prefix = "HLW";
 
 // The greeting service definition.
 service Greeter {
-  // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
-  // Sends another greeting
-  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+    // Sends a greeting
+    rpc SayHello (HelloRequest) returns (HelloReply) {}
+    // Sends another greeting
+    rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+
+    rpc VoidVoid (VoidMsg) returns (VoidMsg) {}
+    rpc IntInt (IntMsg) returns (IntMsg) {}
+    rpc StringString (StringMsg) returns (StringMsg) {}
+    rpc IntVoid (IntMsg) returns (VoidMsg) {}
+    rpc StringVoid (StringMsg) returns (VoidMsg) {}
+    rpc VoidInt (VoidMsg) returns (IntMsg) {}
+    rpc VoidString (VoidMsg) returns (StringMsg) {}
+    rpc VoidBigString (VoidMsg) returns (StringMsg) {}
+    rpc VoidSuperString (VoidMsg) returns (StringMsg) {}
 }
 
 // The request message containing the user's name.
@@ -23,4 +33,21 @@ message HelloRequest {
 // The response message containing the greetings
 message HelloReply {
   string message = 1;
+}
+
+
+message GoodbyeRequest {
+    int32 name = 3;
+}
+
+message GoodbyeReply {
+    int32 tchau = 6;
+}
+
+message VoidMsg {}
+message IntMsg {
+    int32 message = 1;
+}
+message StringMsg {
+    string message = 1;
 }
