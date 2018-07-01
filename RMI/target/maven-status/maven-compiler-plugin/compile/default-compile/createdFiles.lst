@@ -1,3 +1,4 @@
 rmi\Interface.class
-rmi\HelloWorldServer.class
-rmi\HelloWorldClient.class
+rmi\RMIClient.class
+rmi\RMIServer.class
+teste\Localizacao.class
