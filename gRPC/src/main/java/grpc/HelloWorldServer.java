@@ -78,57 +78,84 @@ public class HelloWorldServer {
 
         //recebe void retorna void
         public void voidVoid(VoidMsg req, StreamObserver<VoidMsg> responseObserver) {
+            int a = 1 + 1;
+            int b = 1 * 1;
+            int c = a/b;
             VoidMsg reply = VoidMsg.newBuilder().build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
         //recebe int retorna int
         public void intInt(IntMsg req, StreamObserver<IntMsg> responseObserver) {
-            IntMsg reply = IntMsg.newBuilder().setMessage(11).build();
+            int a = 1 + 1;
+            int b = 1 * 1;
+            int c = a/b;
+            IntMsg reply = IntMsg.newBuilder().setMessage(req.getMessage()*c).build(); //retorna o dobro da entrada
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
         //recebe string retorna string
         public void stringString(StringMsg req, StreamObserver<StringMsg> responseObserver) {
-            StringMsg reply = StringMsg.newBuilder().setMessage("funcionou").build();
+            int a = 1 + 1;
+            int b = 1 * 1;
+            int c = a/b;
+            StringMsg reply = StringMsg.newBuilder().setMessage("funcionou " + c + req.getMessage()).build(); //retorna funcionou 2 (entrada)
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
         //recebe int retorna void
         public void intVoid(IntMsg req, StreamObserver<VoidMsg> responseObserver) {
+            int a = 1 + 1;
+            int b = 1 * 1;
+            int c = a/b + req.getMessage();
             VoidMsg reply = VoidMsg.newBuilder().build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
         //recebe string retorna void
         public void stringVoid(StringMsg req, StreamObserver<VoidMsg> responseObserver) {
+            int a = 1 + 1;
+            int b = 1 * 1;
+            String c = a/b + req.getMessage();
             VoidMsg reply = VoidMsg.newBuilder().build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
         //recebe void retorna int
         public void voidInt(VoidMsg req, StreamObserver<IntMsg> responseObserver) {
-            IntMsg reply = IntMsg.newBuilder().setMessage(11).build();
+            int a = 1 + 1;
+            int b = 1 * 1;
+            int c = a/b;
+            IntMsg reply = IntMsg.newBuilder().setMessage(c).build(); //retorna 2
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
         //recebe void retorna string
         public void voidString(VoidMsg req, StreamObserver<StringMsg> responseObserver) {
-            StringMsg reply = StringMsg.newBuilder().setMessage("funcionou").build();
+            int a = 1 + 1;
+            int b = 1 * 1;
+            int c = a/b;
+            StringMsg reply = StringMsg.newBuilder().setMessage("funcionou " + c).build(); //retorna funcionou 2
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
         
         //recebe void retorna big string
         public void voidBigString(VoidMsg req, StreamObserver<StringMsg> responseObserver) {
-            StringMsg reply = StringMsg.newBuilder().setMessage(bigString()).build();
+            int a = 1 + 1;
+            int b = 1 * 1;
+            int c = a/b;
+            StringMsg reply = StringMsg.newBuilder().setMessage(bigString() + c).build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
         
         //recebe void retorna super string
         public void voidSuperString(VoidMsg req, StreamObserver<StringMsg> responseObserver) {
-            StringMsg reply = StringMsg.newBuilder().setMessage(superString()).build();
+            int a = 1 + 1;
+            int b = 1 * 1;
+            int c = a/b;
+            StringMsg reply = StringMsg.newBuilder().setMessage(superString() + c).build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
@@ -142,7 +169,7 @@ public class HelloWorldServer {
         }
         private String superString() {
             String str = "";
-            for (int i = 0; i < 1048576; i++) {
+            for (int i = 0; i < 102400; i++) {
                 str += "a";
             }
             return str;

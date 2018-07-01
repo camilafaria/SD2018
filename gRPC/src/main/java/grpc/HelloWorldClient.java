@@ -45,12 +45,12 @@ public class HelloWorldClient {
                 
                 public Long[] run(){
                     //criar vetor tempos de execucao
-                    Long[] tempos = new Long[10];
+                    Long[] tempos = new Long[11];
                     
                     //criar requests
                     VoidMsg voidReq = VoidMsg.newBuilder().build();
                     IntMsg intReq = IntMsg.newBuilder().setMessage(123).build();
-                    StringMsg stringReq = StringMsg.newBuilder().setMessage("stringReq").build();
+                    StringMsg stringReq = StringMsg.newBuilder().setMessage("oi").build();
 
                     //criar responses
                     VoidMsg voidResp;
@@ -166,7 +166,7 @@ public class HelloWorldClient {
                         logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
                         return null;
                     }
-                    logger.info("enviei void recebi super string (1MB)");
+                    logger.info("enviei void recebi super string (100KB)");
                     tempos[8] = (end - start);
                     
                     //envia big string recebe void
@@ -182,18 +182,18 @@ public class HelloWorldClient {
                     logger.info("enviei big string (1KB) recebi void");
                     tempos[9] = (end - start);
                     
-                     //envia super string recebe void
-                    //stringReq = StringMsg.newBuilder().setMessage(superString()).build();
-                    //try{
-                    //    start = System.currentTimeMillis();
-                    //    voidResp = blockingStub.stringVoid(stringReq);
-                    //    end = System.currentTimeMillis();
-                    //} catch (StatusRuntimeException e) {
-                    //    logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-                    //    return;
-                    //}
-                    //logger.info("enviei super string (1MB) recebi void");
-                    //logger.info("levou " + (end - start) + " milisegundos");
+                    //envia super string recebe void
+                    stringReq = StringMsg.newBuilder().setMessage(superString()).build();
+                    try{
+                        start = System.currentTimeMillis();
+                        voidResp = blockingStub.stringVoid(stringReq);
+                        end = System.currentTimeMillis();
+                    } catch (StatusRuntimeException e) {
+                        logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+                        return null;
+                    }
+                    logger.info("enviei super string (100KB) recebi void");
+                    tempos[10] = (end - start);
                     
                     return tempos;
                 }
@@ -232,38 +232,39 @@ public class HelloWorldClient {
 				//	user = args[0]; /* Use the arg as the name to greet if provided */
 				//}
 				//client.greet(user);
-                            Long[][] tempos = new Long[11][11];
+                            Long[][] tempos = new Long[12][12];
                             
                             //executa uma vez a mais porque o primeiro tempo vem zuado
                             for (int i = 0; i < 11; i++) {
                                 tempos[i] = client.run();
                             }
-                            String qqq = "";
+                            String stringSaida = "";
                             
                             int media = 0;
                             
-                            for (int j = 0; j < 10; j++) {
+                            for (int j = 0; j < 11; j++) {
                                 switch(j){
-                                    case (0):qqq += "void void \n";break; 
-                                    case (1):qqq += "int int \n";break;
-                                    case (2):qqq += "string string \n";break;
-                                    case (3):qqq += "int void \n";break;
-                                    case (4):qqq += "string void \n";break;
-                                    case (5):qqq += "void int \n";break;
-                                    case (6):qqq += "void string \n";break;
-                                    case (7):qqq += "void / big string \n";break;
-                                    case (8):qqq += "void / super string \n";break;
-                                    case (9):qqq += "big string / void \n";break;
+                                    case (0):stringSaida += "void void \n";break; 
+                                    case (1):stringSaida += "int int \n";break;
+                                    case (2):stringSaida += "string string \n";break;
+                                    case (3):stringSaida += "int void \n";break;
+                                    case (4):stringSaida += "string void \n";break;
+                                    case (5):stringSaida += "void int \n";break;
+                                    case (6):stringSaida += "void string \n";break;
+                                    case (7):stringSaida += "void / big string \n";break;
+                                    case (8):stringSaida += "void / super string \n";break;
+                                    case (9):stringSaida += "big string / void \n";break;
+                                    case (10):stringSaida += "super string / void \n";break;
                                 }
                                 //olha so a partir da segunda execucao
                                 for (int i = 1; i < 11; i++) {                                
                                     media += tempos[i][j];
-                                    qqq += tempos[i][j] + " ";
+                                    stringSaida += tempos[i][j] + " ";
                                 } 
-                                qqq += "media " + media/10 + "\n";
+                                stringSaida += "media " + media/10 + "\n";
                                 media = 0;
                             }
-                            logger.info(qqq);
+                            logger.info(stringSaida);
 			} finally {   
                             client.shutdown();
 			}
@@ -279,7 +280,7 @@ public class HelloWorldClient {
                 
                 private String superString() {
                     String str = "";
-                    for (int i = 0; i < 1048576; i++) {
+                    for (int i = 0; i < 102400; i++) {
                         str += "a";
                     }
                     return str;
