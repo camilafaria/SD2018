@@ -199,7 +199,7 @@ public class RMIServer implements Interface {
 		int b = 1 * 1;
 		long c = a / b;
 
-		return (c + req1 - req2) / (req3 - req4);
+		return c + (req1 / req2) + (req3 / req4);
 	}
 
 	// recebe oito argumentos long e retorna um

@@ -1,4 +1,4 @@
-rmi\Interface.class
 rmi\RMIClient.class
+rmi\Interface.class
 rmi\RMIServer.class
 teste\Localizacao.class

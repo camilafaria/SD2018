@@ -152,6 +152,7 @@ public class RMIClient {
 
 		try {
 			// cria stub
+			//Registry registry = LocateRegistry.getRegistry("192.168.1.111",1099);
 			Registry registry = LocateRegistry.getRegistry();
 			Interface stub = (Interface) registry.lookup("Interface");
 
