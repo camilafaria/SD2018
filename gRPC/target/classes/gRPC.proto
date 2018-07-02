@@ -7,47 +7,89 @@ option java_package = "gRPC.proto";
 option java_outer_classname = "MyProto";
 option objc_class_prefix = "HLW";
 
-// The greeting service definition.
 service Greeter {
-    // Sends a greeting
-    rpc SayHello (HelloRequest) returns (HelloReply) {}
-    // Sends another greeting
-    rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
-
     rpc VoidVoid (VoidMsg) returns (VoidMsg) {}
     rpc IntInt (IntMsg) returns (IntMsg) {}
-    rpc StringString (StringMsg) returns (StringMsg) {}
+    rpc LongLong(LongMsg) returns (LongMsg) {}
+    rpc StringString (StringMsgSize) returns (StringMsg) {}
     rpc IntVoid (IntMsg) returns (VoidMsg) {}
     rpc StringVoid (StringMsg) returns (VoidMsg) {}
+    rpc LongVoid(LongMsg) returns (VoidMsg) {}
     rpc VoidInt (VoidMsg) returns (IntMsg) {}
     rpc VoidString (VoidMsg) returns (StringMsg) {}
+    rpc voidLong(VoidMsg) returns (LongMsg) {}
     rpc VoidBigString (VoidMsg) returns (StringMsg) {}
     rpc VoidSuperString (VoidMsg) returns (StringMsg) {}
-}
-
-// The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
-}
-
-// The response message containing the greetings
-message HelloReply {
-  string message = 1;
-}
-
-
-message GoodbyeRequest {
-    int32 name = 3;
-}
-
-message GoodbyeReply {
-    int32 tchau = 6;
+    rpc longDoisArg(Long2x) returns (LongMsg) {}
+    rpc longQuatroArg(Long4x) returns (LongMsg) {}
+    rpc longOitoArg(Long8x) returns (LongMsg) {}
+    rpc longStringDoisArg(LongString) returns (StringMsg) {}
+    rpc longStringQuatroArg(LongStringx2) returns (StringMsg) {}
+    rpc createLocalizacao(LocMsg) returns (Localizacao) {}
 }
 
 message VoidMsg {}
+
 message IntMsg {
-    int32 message = 1;
+    int32 value = 1;
 }
+
+message LongMsg {
+    int64 value = 1;
+}
+
+message StringMsgSize {
+    string message = 1;
+    int32 size = 2;
+}
+
 message StringMsg {
     string message = 1;
+}
+
+message Long2x {
+	int64 value1 = 1;
+	int64 value2 = 2;
+}
+
+message Long4x {
+	int64 value1 = 1;
+	int64 value2 = 2;
+	int64 value3 = 3;
+	int64 value4 = 4;
+}
+
+message Long8x {
+	int64 value1 = 1;
+	int64 value2 = 2;
+	int64 value3 = 3;
+	int64 value4 = 4;
+	int64 value5 = 5;
+	int64 value6 = 6;
+	int64 value7 = 7;
+	int64 value8 = 8;
+}
+
+message LongString {
+	int64 value = 1;
+	string message = 2;
+}
+
+message LongStringx2 {
+	int64 value1 = 1;
+	int64 value2 = 2;
+	string message1 = 3;
+	string message2 = 4;
+}
+
+message LocMsg {
+	int32 lat = 1;
+	int32 longi = 2;
+	string msg = 3;
+}
+
+message Localizacao {
+	int32 latitude = 1;
+	int32 longitude = 2;
+	string mensagem = 3;
 }

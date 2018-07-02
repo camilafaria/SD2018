@@ -152,8 +152,8 @@ public class RMIClient {
 
 		try {
 			// cria stub
-			//Registry registry = LocateRegistry.getRegistry("192.168.1.111",1099);
-			Registry registry = LocateRegistry.getRegistry();
+			Registry registry = LocateRegistry.getRegistry("192.168.1.111",1099);
+			//Registry registry = LocateRegistry.getRegistry();
 			Interface stub = (Interface) registry.lookup("Interface");
 
 			/* ----------------------------------------------------- */
@@ -197,7 +197,7 @@ public class RMIClient {
 
 			// envia int recebe void
 			start = System.currentTimeMillis();
-			stub.intVoid(123);
+			stub.intVoid(12345);
 			end = System.currentTimeMillis();
 			logger.info("enviei int (12345) recebi void");
 			tempos[14] = (end - start);

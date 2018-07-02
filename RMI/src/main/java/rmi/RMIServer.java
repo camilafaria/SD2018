@@ -229,9 +229,9 @@ public class RMIServer implements Interface {
 		return c + req1 + req2 + req3 + req4;
 	}
 
-	/* ---------------------------------------------- */
+	/* ----------------------------------------------- */
 	/* Metodos que recebem e retornam um tipo complexo */
-	/* ---------------------------------------------- */
+	/* ----------------------------------------------- */
 
 	// recebe três argumentos e cria um objeto Localizacao
 	public Localizacao createLocalizacao(int lat, int longi, String msg) {
