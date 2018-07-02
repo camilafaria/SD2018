@@ -9,13 +9,13 @@ import java.util.logging.Logger;
 
 import gRPC.proto.*;
 
-public class HelloWorldServer {
-    private static final Logger logger = Logger.getLogger(HelloWorldServer.class.getName());
+public class GRPCServer {
+    private static final Logger logger = Logger.getLogger(GRPCServer.class.getName());
 
     private Server server;
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        final HelloWorldServer server = new HelloWorldServer();
+        final GRPCServer server = new GRPCServer();
         server.start();
         server.blockUntilShutdown();
     }
@@ -29,7 +29,7 @@ public class HelloWorldServer {
             @Override
             public void run() {                
                 System.err.println("*** shutting down gRPC server since JVM is shutting down");
-                HelloWorldServer.this.stop();
+                GRPCServer.this.stop();
                 System.err.println("*** server shut down");
             }
         });

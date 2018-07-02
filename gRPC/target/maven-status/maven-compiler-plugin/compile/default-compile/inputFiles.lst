@@ -1,3 +1,4 @@
+C:\Users\camil\SD2018\gRPC\src\main\java\grpc\GRPCClient.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\LocMsg.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\LongStringx2OrBuilder.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\Long8xOrBuilder.java
@@ -7,13 +8,13 @@ C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\Lon
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\StringMsgOrBuilder.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\VoidMsgOrBuilder.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\LongMsg.java
-C:\Users\camil\SD2018\gRPC\src\main\java\grpc\HelloWorldClient.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\LongStringx2.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\LocMsgOrBuilder.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\VoidMsg.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\Long2x.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\Long4x.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\IntMsg.java
+C:\Users\camil\SD2018\gRPC\src\main\java\grpc\GRPCServer.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\IntMsgOrBuilder.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\MyProto.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\LocalizacaoOrBuilder.java
@@ -25,4 +26,3 @@ C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\Str
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\LongString.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\Localizacao.java
 C:\Users\camil\SD2018\gRPC\target\generated-sources\protobuf\java\gRPC\proto\StringMsgSizeOrBuilder.java
-C:\Users\camil\SD2018\gRPC\src\main\java\grpc\HelloWorldServer.java

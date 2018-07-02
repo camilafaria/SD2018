@@ -9,14 +9,14 @@ import java.util.logging.Logger;
 
 import gRPC.proto.*;
 
-public class HelloWorldClient {
-	private static final Logger logger = Logger.getLogger(HelloWorldClient.class.getName());
+public class GRPCClient {
+	private static final Logger logger = Logger.getLogger(GRPCClient.class.getName());
 
 	private final ManagedChannel channel;
 	private final GreeterGrpc.GreeterBlockingStub blockingStub;
 
 	/** Construct client connecting to HelloWorld server at {@code host:port}. */
-	public HelloWorldClient(String host, int port) {
+	public GRPCClient(String host, int port) {
 		this(ManagedChannelBuilder.forAddress(host, port)
 				// Channels are secure by default (via SSL/TLS). For the example we disable TLS
 				// to avoid
@@ -27,7 +27,7 @@ public class HelloWorldClient {
 	/**
 	 * Construct client for accessing RouteGuide server using the existing channel.
 	 */
-	HelloWorldClient(ManagedChannel channel) {
+	GRPCClient(ManagedChannel channel) {
 		this.channel = channel;
 		blockingStub = GreeterGrpc.newBlockingStub(channel);
 	}
@@ -263,7 +263,7 @@ public class HelloWorldClient {
 
 	public static void main(String[] args) throws Exception {
 		//HelloWorldClient client = new HelloWorldClient("192.168.1.102", 50051);
-		HelloWorldClient client = new HelloWorldClient("localhost", 50051);
+		GRPCClient client = new GRPCClient("localhost", 50051);
 		try {
 			Long[][] tempos = new Long[11][30];
 			String stringSaida = "";
