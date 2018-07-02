@@ -262,6 +262,7 @@ public class HelloWorldClient {
 	}
 
 	public static void main(String[] args) throws Exception {
+		//HelloWorldClient client = new HelloWorldClient("192.168.1.102", 50051);
 		HelloWorldClient client = new HelloWorldClient("localhost", 50051);
 		try {
 			Long[][] tempos = new Long[11][30];
@@ -370,8 +371,8 @@ public class HelloWorldClient {
 				
 				// olha so a partir da segunda execucao
 				for (int i = 1; i < 11; i++) {
-					media += tempos[i][j];
-					stringSaida += tempos[i][j] + " ";
+					media += tempos[i][j]; 
+					stringSaida += tempos[i][j] + "|";
 				}
 				stringSaida += "media " + media / 10 + "\n";
 				media = 0;
