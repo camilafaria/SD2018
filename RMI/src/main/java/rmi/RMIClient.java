@@ -14,7 +14,8 @@ public class RMIClient {
 
 	public static void main(String[] args) throws Exception {
 		try {
-			RMIClient client = new RMIClient();
+			RMIClient client = new RMIClient();			
+			String host = (args.length < 1) ? "localhost" : args[0];	
 
 			Long[][] tempos = new Long[11][30];
 			String stringSaida = "";
@@ -22,7 +23,7 @@ public class RMIClient {
 
 			// invoca 10x os metodos a serem executados remotamente
 			for (int i = 0; i < tempos.length; i++) {
-				tempos[i] = client.run();
+				tempos[i] = client.run(host);
 			}
 
 			// estabelece a ordem das execucoes
@@ -136,7 +137,7 @@ public class RMIClient {
 	}
 
 	/* Invoca os metodos a serem executados remotamente pelo servidor */
-	public Long[] run() {
+	public Long[] run(String host) {
 		// cria vetor tempos de execucao
 		Long[] tempos = new Long[30];
 
@@ -152,8 +153,7 @@ public class RMIClient {
 
 		try {
 			// cria stub
-			//Registry registry = LocateRegistry.getRegistry("192.168.1.111",1099);
-			Registry registry = LocateRegistry.getRegistry();
+			Registry registry = LocateRegistry.getRegistry(host, 50051);
 			Interface stub = (Interface) registry.lookup("Interface");
 
 			/* ----------------------------------------------------- */

@@ -268,10 +268,14 @@ public class GRPCServer {
         
         // recebe três argumentos e cria um objeto Localizacao
         public void createLocalizacao(LocMsg req, StreamObserver<Localizacao> responseObserver) {
+        	int a = 1 + 1;
+    		int b = 1 * 1;
+    		long c = a / b;
+        	
         	Localizacao reply = Localizacao.newBuilder()
         			.setLatitude(req.getLat())
         			.setLongitude(req.getLongi())
-        			.setMensagem(req.getMsg())
+        			.setMensagem(req.getMsg()+c)
         			.build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();

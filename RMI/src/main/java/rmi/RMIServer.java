@@ -17,9 +17,11 @@ public class RMIServer implements Interface {
 	public static void main(String[] args) {
 
 		try {
-			RMIServer server = new RMIServer();
+			RMIServer server = new RMIServer();			
+			String host = (args.length < 1) ? "localhost" : args[0];
 			int port = 50051;
-			server.createStubAndBind();
+			
+			server.createStubAndBind(host, port);
 			logger.info("Server started, listening on " + port);
 			blockUntilShutdown(server);
 		} catch (RemoteException e) {
@@ -31,9 +33,9 @@ public class RMIServer implements Interface {
 	}
 
 	/* Criacao do stub */
-	public void createStubAndBind() throws RemoteException {
-		Interface stub = (Interface) UnicastRemoteObject.exportObject((Interface) this, 50051);
-		Registry registry = LocateRegistry.createRegistry(1099);
+	public void createStubAndBind(String host, int port) throws RemoteException {
+		Interface stub = (Interface) UnicastRemoteObject.exportObject((Interface) this, 0);
+		Registry registry = LocateRegistry.createRegistry(port);	
 		registry.rebind("Interface", stub);
 	}
 
@@ -51,14 +53,14 @@ public class RMIServer implements Interface {
 	/* ------------------------------------------- */
 
 	// recebe void retorna void
-	public void voidVoid() {
+	public void voidVoid() throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		int c = a / b;
 	}
 
 	// recebe int retorna int
-	public int intInt(int req) {
+	public int intInt(int req) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		int c = a / b;
@@ -67,7 +69,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe long retorna long
-	public long longLong(long req) {
+	public long longLong(long req) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		int c = a / b;
@@ -76,7 +78,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe string retorna string (de diferentes tamanhos)	
-	public String stringString(String str, int tamanho) {
+	public String stringString(String str, int tamanho) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		int c = a / b;
@@ -94,21 +96,21 @@ public class RMIServer implements Interface {
 	/* ------------------------------------------- */
 
 	// recebe int retorna void
-	public void intVoid(int req) {
+	public void intVoid(int req) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		int c = a / b + req;
 	}
 
 	// recebe string retorna void
-	public void stringVoid(String req) {
+	public void stringVoid(String req) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		String c = a / b + req;
 	}
 
 	// recebe long retorna void
-	public void longVoid(long req) {
+	public void longVoid(long req) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		long c = a / b + req;
@@ -119,7 +121,7 @@ public class RMIServer implements Interface {
 	/* ------------------------------------------- */
 
 	// recebe void retorna int
-	public int voidInt() {
+	public int voidInt() throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		int c = a / b;
@@ -127,7 +129,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe void retorna string
-	public String voidString() {
+	public String voidString() throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		int c = a / b;
@@ -136,7 +138,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe void retorna long
-	public long voidLong() {
+	public long voidLong() throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		long c = a / b;
@@ -145,7 +147,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe void retorna big string
-	public String voidBigString() {
+	public String voidBigString() throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		int c = a / b;
@@ -154,7 +156,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe void retorna super string
-	public String voidSuperString() {
+	public String voidSuperString() throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		int c = a / b;
@@ -163,7 +165,7 @@ public class RMIServer implements Interface {
 	}
 
 	// metodo auxiliar para criacao de bigstring
-	private String bigString() {
+	private String bigString() throws RemoteException {
 		String str = "";
 		for (int i = 0; i < 1024; i++) {
 			str += "a";
@@ -172,7 +174,7 @@ public class RMIServer implements Interface {
 	}
 
 	// metodo auxiliar para criacao de superstring
-	private String superString() {
+	private String superString() throws RemoteException {
 		String str = "";
 		for (int i = 0; i < 102400; i++) {
 			str += "a";
@@ -185,7 +187,7 @@ public class RMIServer implements Interface {
 	/* ----------------------------------------------------------- */
 
 	// recebe dois argumentos long e retorna um
-	public long longDoisArg(long req1, long req2) {
+	public long longDoisArg(long req1, long req2) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		long c = a / b;
@@ -194,7 +196,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe quatro argumentos long e retorna um
-	public long longQuatroArg(long req1, long req2, long req3, long req4) {
+	public long longQuatroArg(long req1, long req2, long req3, long req4) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		long c = a / b;
@@ -203,7 +205,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe oito argumentos long e retorna um
-	public long longOitoArg(long req1, long req2, long req3, long req4, long req5, long req6, long req7, long req8) {
+	public long longOitoArg(long req1, long req2, long req3, long req4, long req5, long req6, long req7, long req8) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		long c = a / b;
@@ -212,7 +214,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe dois argumentos (long, String) e retorna uma String
-	public String longStringDoisArg(long req1, String req2) {
+	public String longStringDoisArg(long req1, String req2) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		long c = a / b;
@@ -221,7 +223,7 @@ public class RMIServer implements Interface {
 	}
 
 	// recebe quatro argumentos (long, long, String, String) e retorna uma String
-	public String longStringQuatroArg(long req1, long req2, String req3, String req4) {
+	public String longStringQuatroArg(long req1, long req2, String req3, String req4) throws RemoteException {
 		int a = 1 + 1;
 		int b = 1 * 1;
 		long c = a / b;
@@ -234,8 +236,12 @@ public class RMIServer implements Interface {
 	/* ----------------------------------------------- */
 
 	// recebe três argumentos e cria um objeto Localizacao
-	public Localizacao createLocalizacao(int lat, int longi, String msg) {
-		Localizacao local = new Localizacao(lat, longi, msg);
+	public Localizacao createLocalizacao(int lat, int longi, String msg) throws RemoteException {
+		int a = 1 + 1;
+		int b = 1 * 1;
+		long c = a / b;
+		
+		Localizacao local = new Localizacao(lat, longi, msg+c);
 		return local;
 	}
 

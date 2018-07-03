@@ -35,7 +35,128 @@ public class GRPCClient {
 	public void shutdown() throws InterruptedException {
 		channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 	}
+	
+	public static void main(String[] args) throws Exception {
+		String host = (args.length < 1) ? "localhost" : args[0];		
+		GRPCClient client = new GRPCClient(host, 50051);
+		try {
+			Long[][] tempos = new Long[11][30];
+			String stringSaida = "";
+			double media = 0;
 
+			// invoca 10x os metodos a serem executados remotamente
+			for (int i = 0; i < tempos.length; i++) {
+				tempos[i] = client.run();
+			}
+			
+			// estabelece a ordem das execucoes
+			for (int j = 0; j < 30; j++) {
+				switch (j) {
+				case (0):
+					stringSaida += "void void \n";
+					break;
+				case (1):
+					stringSaida += "int int \n";
+					break;
+				case (2):
+					stringSaida += "long long \n";
+					break;
+				case (3):
+					stringSaida += "string string1 \n";
+					break;
+				case (4):
+					stringSaida += "string string2 \n";
+					break;
+				case (5):
+					stringSaida += "string string4 \n";
+					break;
+				case (6):
+					stringSaida += "string string8 \n";
+					break;
+				case (7):
+					stringSaida += "string string16 \n";
+					break;
+				case (8):
+					stringSaida += "string string32 \n";
+					break;
+				case (9):
+					stringSaida += "string string64 \n";
+					break;
+				case (10):
+					stringSaida += "string string128 \n";
+					break;
+				case (11):
+					stringSaida += "string string256 \n";
+					break;
+				case (12):
+					stringSaida += "string string512 \n";
+					break;
+				case (13):
+					stringSaida += "string string1024 \n";
+					break;
+				case (14):
+					stringSaida += "int void \n";
+					break;
+				case (15):
+					stringSaida += "string void \n";
+					break;
+				case (16):
+					stringSaida += "long void \n";
+					break;
+				case (17):
+					stringSaida += "big string / void \n";
+					break;
+				case (18):
+					stringSaida += "super string / void \n";
+					break;	
+				case (19):
+					stringSaida += "void int \n";
+					break;
+				case (20):
+					stringSaida += "void string \n";
+					break;
+				case (21):
+					stringSaida += "void long \n";
+					break;
+				case (22):
+					stringSaida += "void / big string \n";
+					break;
+				case (23):
+					stringSaida += "void / super string \n";
+					break;
+				case (24):
+					stringSaida += "2xlong long \n";
+					break;
+				case (25):
+					stringSaida += "4xlong long \n";
+					break;
+				case (26):
+					stringSaida += "8xlong long \n";
+					break;
+				case (27):
+					stringSaida += "long,string string \n";
+					break;
+				case (28):
+					stringSaida += "long,long,string,string string \n";
+					break;
+				case (29):
+					stringSaida += "double,double,string localizacao \n";
+					break;				
+				}
+				
+				for (int i = 1; i < 11; i++) {
+					media += tempos[i][j]; 
+					stringSaida += tempos[i][j] + "|";
+				}
+				stringSaida += "media " + media / 10 + "\n";
+				media = 0;
+			}
+			logger.info(stringSaida);
+		} finally {
+			client.shutdown();
+		}
+	}
+	
 	public Long[] run() {
 		// criar vetor tempos de execucao
 		Long[] tempos = new Long[30];
@@ -259,128 +380,6 @@ public class GRPCClient {
         }
 			
 		return tempos;
-	}
-
-	public static void main(String[] args) throws Exception {
-		//HelloWorldClient client = new HelloWorldClient("192.168.1.102", 50051);
-		GRPCClient client = new GRPCClient("localhost", 50051);
-		try {
-			Long[][] tempos = new Long[11][30];
-			String stringSaida = "";
-			double media = 0;
-
-			// invoca 10x os metodos a serem executados remotamente
-			for (int i = 0; i < tempos.length; i++) {
-				tempos[i] = client.run();
-			}
-			
-			// estabelece a ordem das execucoes
-			for (int j = 0; j < 30; j++) {
-				switch (j) {
-				case (0):
-					stringSaida += "void void \n";
-					break;
-				case (1):
-					stringSaida += "int int \n";
-					break;
-				case (2):
-					stringSaida += "long long \n";
-					break;
-				case (3):
-					stringSaida += "string string1 \n";
-					break;
-				case (4):
-					stringSaida += "string string2 \n";
-					break;
-				case (5):
-					stringSaida += "string string4 \n";
-					break;
-				case (6):
-					stringSaida += "string string8 \n";
-					break;
-				case (7):
-					stringSaida += "string string16 \n";
-					break;
-				case (8):
-					stringSaida += "string string32 \n";
-					break;
-				case (9):
-					stringSaida += "string string64 \n";
-					break;
-				case (10):
-					stringSaida += "string string128 \n";
-					break;
-				case (11):
-					stringSaida += "string string256 \n";
-					break;
-				case (12):
-					stringSaida += "string string512 \n";
-					break;
-				case (13):
-					stringSaida += "string stringpot1024 \n";
-					break;
-				case (14):
-					stringSaida += "int void \n";
-					break;
-				case (15):
-					stringSaida += "string void \n";
-					break;
-				case (16):
-					stringSaida += "long void \n";
-					break;
-				case (17):
-					stringSaida += "big string / void \n";
-					break;
-				case (18):
-					stringSaida += "super string / void \n";
-					break;	
-				case (19):
-					stringSaida += "void int \n";
-					break;
-				case (20):
-					stringSaida += "void string \n";
-					break;
-				case (21):
-					stringSaida += "void long \n";
-					break;
-				case (22):
-					stringSaida += "void / big string \n";
-					break;
-				case (23):
-					stringSaida += "void / super string \n";
-					break;
-				case (24):
-					stringSaida += "2xlong long \n";
-					break;
-				case (25):
-					stringSaida += "4xlong long \n";
-					break;
-				case (26):
-					stringSaida += "8xlong long \n";
-					break;
-				case (27):
-					stringSaida += "long,string string \n";
-					break;
-				case (28):
-					stringSaida += "long,long,string,string string \n";
-					break;
-				case (29):
-					stringSaida += "double,double,string localizacao \n";
-					break;				
-				}
-				
-				// olha so a partir da segunda execucao
-				for (int i = 1; i < 11; i++) {
-					media += tempos[i][j]; 
-					stringSaida += tempos[i][j] + "|";
-				}
-				stringSaida += "media " + media / 10 + "\n";
-				media = 0;
-			}
-			logger.info(stringSaida);
-		} finally {
-			client.shutdown();
-		}
 	}
 
 	private String bigString() {
